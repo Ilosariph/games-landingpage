@@ -1,0 +1,12 @@
+{
+  "name": "games-landingpage",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "siwi.li landing page with links to the games and a live multiplayer snake pit",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "node --test tests/*.test.mjs"
+  }
+}
