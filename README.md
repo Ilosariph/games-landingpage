@@ -1,6 +1,6 @@
 # siwi.li games landing page
 
-Landing page linking to [Nonogram](https://nonogram.siwi.li), [Sudoku](https://sudoku.siwi.li) and [Battleships](https://battleships.siwi.li), plus **Snake pit**: a live multiplayer slither.io-style game embedded in the page. Everyone who opens the page shares one arena; bots keep it busy when few people are around.
+Landing page linking to [Nonogram](https://nonogram.siwi.li), [Sudoku](https://sudoku.siwi.li), [Minesweeper](https://minesweeper.siwi.li) and [Battleships](https://battleships.siwi.li), plus **Snake pit**: a live multiplayer slither.io-style game embedded in the page. Everyone who opens the page shares one arena; bots keep it busy when few people are around.
 
 A small Node server (no npm dependencies) serves `public/` and runs the authoritative game loop over a WebSocket at `/ws`.
 

@@ -10,6 +10,7 @@
   --nono: #c45d3e;
   --nono-fill: #5b7ab8;
   --sudo: #4f6bed;
+  --mine: #b07a1f;
   --sea: #2a7f9e;
   --sea-water: #e3edf0;
   --sea-ship: #5d6b78;
@@ -32,6 +33,7 @@
     --nono: #d4694a;
     --nono-fill: #6c8cd0;
     --sudo: #7088ff;
+    --mine: #d9a441;
     --sea: #3f9fc0;
     --sea-water: #1d2a30;
     --sea-ship: #7d8a96;
@@ -48,6 +50,7 @@
   --nono: #d4694a;
   --nono-fill: #6c8cd0;
   --sudo: #7088ff;
+  --mine: #d9a441;
   --sea: #3f9fc0;
   --sea-water: #1d2a30;
   --sea-ship: #7d8a96;
@@ -132,6 +135,7 @@ main { max-width: 1160px; margin: 0 auto; }
 }
 .card-sudoku { --accent: var(--sudo); }
 .card-battleships { --accent: var(--sea); }
+.card-minesweeper { --accent: var(--mine); }
 .card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .card:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 .card h2 { font-family: var(--serif); font-size: 1.55rem; line-height: 1.1; letter-spacing: -0.01em; }
@@ -205,6 +209,28 @@ main { max-width: 1160px; margin: 0 auto; }
 .thumb.sea span.hit::after { content: "×"; color: #fff; font-family: var(--sans); font-weight: 700; font-size: 1rem; line-height: 1; }
 .card:hover .thumb.sea span.hit { animation: pop 0.35s ease both; }
 .card:hover .thumb.sea span.hit + .hit { animation-delay: 80ms; }
+
+.thumb.mine {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+  gap: 2px;
+  padding: 6px;
+  background: color-mix(in srgb, var(--mine) 18%, var(--surface));
+}
+.thumb.mine span {
+  display: grid;
+  place-items: center;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--mine) 30%, var(--surface));
+  box-shadow: inset 1.5px 1.5px 0 color-mix(in srgb, #fff 35%, transparent), inset -1.5px -1.5px 0 color-mix(in srgb, #000 15%, transparent);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.thumb.mine span.o { background: var(--surface); box-shadow: none; }
+.thumb.mine span.n1 { color: var(--sudo); }
+.thumb.mine span.f::after { content: "\2691"; color: var(--nono); font-size: 0.9rem; }
+.card:hover .thumb.mine span.f::after { animation: pop 0.35s ease both; display: inline-block; }
 
 /* ── Snake pit ── */
 .pit { padding-block: clamp(40px, 7vw, 72px) 16px; }
