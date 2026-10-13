@@ -14,6 +14,10 @@
   --sea: #2a7f9e;
   --sea-water: #e3edf0;
   --sea-ship: #5d6b78;
+  --c4: #c2334d;
+  --c4-frame: #2f5ec4;
+  --c4-red: #d8443a;
+  --c4-yellow: #f2b630;
   --pit: #2fbf71;
   --shadow: 0 1px 2px rgba(40, 30, 10, 0.06), 0 8px 28px rgba(40, 30, 10, 0.08);
   --radius: 14px;
@@ -37,6 +41,10 @@
     --sea: #3f9fc0;
     --sea-water: #1d2a30;
     --sea-ship: #7d8a96;
+    --c4: #e05a72;
+    --c4-frame: #2a4d9a;
+    --c4-red: #e0554a;
+    --c4-yellow: #f0bb3e;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px rgba(0, 0, 0, 0.35);
     color-scheme: dark;
   }
@@ -54,6 +62,10 @@
   --sea: #3f9fc0;
   --sea-water: #1d2a30;
   --sea-ship: #7d8a96;
+  --c4: #e05a72;
+  --c4-frame: #2a4d9a;
+  --c4-red: #e0554a;
+  --c4-yellow: #f0bb3e;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px rgba(0, 0, 0, 0.35);
   color-scheme: dark;
 }
@@ -136,6 +148,7 @@ main { max-width: 1160px; margin: 0 auto; }
 .card-sudoku { --accent: var(--sudo); }
 .card-battleships { --accent: var(--sea); }
 .card-minesweeper { --accent: var(--mine); }
+.card-connect-four { --accent: var(--c4); }
 .card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .card:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 .card h2 { font-family: var(--serif); font-size: 1.55rem; line-height: 1.1; letter-spacing: -0.01em; }
@@ -231,6 +244,20 @@ main { max-width: 1160px; margin: 0 auto; }
 .thumb.mine span.n1 { color: var(--sudo); }
 .thumb.mine span.f::after { content: "\2691"; color: var(--nono); font-size: 0.9rem; }
 .card:hover .thumb.mine span.f::after { animation: pop 0.35s ease both; display: inline-block; }
+
+.thumb.c4 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+  gap: 4px;
+  padding: 8px;
+  background: var(--c4-frame);
+}
+.thumb.c4 span { position: relative; display: grid; place-items: center; border-radius: 50%; background: var(--bg); }
+.thumb.c4 span.r { background: var(--c4-red); }
+.thumb.c4 span.y { background: var(--c4-yellow); }
+.thumb.c4 span.w::after { content: ""; width: 46%; height: 46%; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, 0.85); }
+.card:hover .thumb.c4 span.drop { animation: c4drop 0.45s cubic-bezier(0.55, 0, 1, 0.45) both; }
+@keyframes c4drop { from { transform: translateY(-260%); } }
 
 /* ── Snake pit ── */
 .pit { padding-block: clamp(40px, 7vw, 72px) 16px; }
