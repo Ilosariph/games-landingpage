@@ -18,6 +18,9 @@
   --c4-frame: #2f5ec4;
   --c4-red: #d8443a;
   --c4-yellow: #f2b630;
+  --sol: #3f8a5a;
+  --sol-felt: #e3ece3;
+  --sol-red: #c4453e;
   --pit: #2fbf71;
   --shadow: 0 1px 2px rgba(40, 30, 10, 0.06), 0 8px 28px rgba(40, 30, 10, 0.08);
   --radius: 14px;
@@ -45,6 +48,9 @@
     --c4-frame: #2a4d9a;
     --c4-red: #e0554a;
     --c4-yellow: #f0bb3e;
+    --sol: #5fb07c;
+    --sol-felt: #1c2a21;
+    --sol-red: #d0564c;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px rgba(0, 0, 0, 0.35);
     color-scheme: dark;
   }
@@ -66,6 +72,9 @@
   --c4-frame: #2a4d9a;
   --c4-red: #e0554a;
   --c4-yellow: #f0bb3e;
+  --sol: #5fb07c;
+  --sol-felt: #1c2a21;
+  --sol-red: #d0564c;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px rgba(0, 0, 0, 0.35);
   color-scheme: dark;
 }
@@ -149,6 +158,7 @@ main { max-width: 1160px; margin: 0 auto; }
 .card-battleships { --accent: var(--sea); }
 .card-minesweeper { --accent: var(--mine); }
 .card-connect-four { --accent: var(--c4); }
+.card-solitaire { --accent: var(--sol); }
 .card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .card:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 .card h2 { font-family: var(--serif); font-size: 1.55rem; line-height: 1.1; letter-spacing: -0.01em; }
@@ -258,6 +268,43 @@ main { max-width: 1160px; margin: 0 auto; }
 .thumb.c4 span.w::after { content: ""; width: 46%; height: 46%; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, 0.85); }
 .card:hover .thumb.c4 span.drop { animation: c4drop 0.45s cubic-bezier(0.55, 0, 1, 0.45) both; }
 @keyframes c4drop { from { transform: translateY(-260%); } }
+
+.thumb.sol { display: block; position: relative; background: var(--sol-felt); }
+.thumb.sol span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 46%;
+  height: 64%;
+  margin: -30% 0 0 -23%;
+  padding: 5% 7%;
+  background: #fffdf8;
+  border: 1px solid rgba(40, 30, 10, 0.18);
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(40, 30, 10, 0.18);
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1;
+  color: #23201c;
+  transform-origin: 50% 100%;
+  transition: transform 0.3s cubic-bezier(.2, .8, .3, 1.2);
+}
+.thumb.sol span i { font-style: normal; font-size: 0.85em; margin-left: 1px; }
+.thumb.sol span.red { color: var(--sol-red); }
+.thumb.sol span.back {
+  background:
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.22) 0 2px, transparent 2px 6px),
+    repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.22) 0 2px, transparent 2px 6px),
+    var(--nono);
+  border: 2px solid #fffdf8;
+}
+.thumb.sol span:nth-child(1) { transform: translateX(-30%) rotate(-16deg); }
+.thumb.sol span:nth-child(2) { transform: rotate(0deg); }
+.thumb.sol span:nth-child(3) { transform: translateX(30%) rotate(16deg); }
+.card:hover .thumb.sol span:nth-child(1) { transform: translateX(-38%) rotate(-24deg); }
+.card:hover .thumb.sol span:nth-child(2) { transform: translateY(-6%); }
+.card:hover .thumb.sol span:nth-child(3) { transform: translateX(38%) rotate(24deg); }
 
 /* ── Snake pit ── */
 .pit { padding-block: clamp(40px, 7vw, 72px) 16px; }
