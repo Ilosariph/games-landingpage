@@ -21,6 +21,9 @@
   --sol: #3f8a5a;
   --sol-felt: #e3ece3;
   --sol-red: #c4453e;
+  --ttt: #2f5ec4;
+  --ttt-x: #d8443a;
+  --ttt-o: #2f5ec4;
   --pit: #2fbf71;
   --shadow: 0 1px 2px rgba(40, 30, 10, 0.06), 0 8px 28px rgba(40, 30, 10, 0.08);
   --radius: 14px;
@@ -51,6 +54,9 @@
     --sol: #5fb07c;
     --sol-felt: #1c2a21;
     --sol-red: #d0564c;
+  --ttt: #5a85e0;
+  --ttt-x: #e0554a;
+  --ttt-o: #5a85e0;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px rgba(0, 0, 0, 0.35);
     color-scheme: dark;
   }
@@ -75,6 +81,9 @@
   --sol: #5fb07c;
   --sol-felt: #1c2a21;
   --sol-red: #d0564c;
+  --ttt: #5a85e0;
+  --ttt-x: #e0554a;
+  --ttt-o: #5a85e0;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px rgba(0, 0, 0, 0.35);
   color-scheme: dark;
 }
@@ -158,6 +167,7 @@ main { max-width: 1160px; margin: 0 auto; }
 .card-battleships { --accent: var(--sea); }
 .card-minesweeper { --accent: var(--mine); }
 .card-connect-four { --accent: var(--c4); }
+.card-tic-tac-toe { --accent: var(--ttt); }
 .card-solitaire { --accent: var(--sol); }
 .card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .card:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
@@ -268,6 +278,35 @@ main { max-width: 1160px; margin: 0 auto; }
 .thumb.c4 span.w::after { content: ""; width: 46%; height: 46%; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, 0.85); }
 .card:hover .thumb.c4 span.drop { animation: c4drop 0.45s cubic-bezier(0.55, 0, 1, 0.45) both; }
 @keyframes c4drop { from { transform: translateY(-260%); } }
+
+.thumb.ttt {
+  position: relative;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 3px;
+  padding: 8px;
+  background: color-mix(in srgb, var(--ttt) 22%, var(--surface));
+}
+.thumb.ttt span { position: relative; background: var(--surface); border-radius: 2px; }
+.thumb.ttt span.x::before, .thumb.ttt span.x::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 5px;
+  height: 64%;
+  top: 18%;
+  margin-left: -2.5px;
+  border-radius: 2px;
+  background: var(--ttt-x);
+  transform: rotate(45deg);
+}
+.thumb.ttt span.x::after { transform: rotate(-45deg); }
+.thumb.ttt span.o::before { content: ""; position: absolute; inset: 20%; border-radius: 50%; border: 4.5px solid var(--ttt-o); }
+.thumb.ttt svg { position: absolute; inset: 8px; width: calc(100% - 16px); height: calc(100% - 16px); }
+.thumb.ttt line { stroke: var(--ttt-x); stroke-width: 0.1; stroke-linecap: round; stroke-dasharray: 1; }
+.card:hover .thumb.ttt span.last { animation: pop 0.35s ease both; }
+.card:hover .thumb.ttt line { animation: tttstrike 0.4s 0.2s ease-out both; }
+@keyframes tttstrike { from { stroke-dashoffset: 1; } }
 
 .thumb.sol { display: block; position: relative; background: var(--sol-felt); }
 .thumb.sol span {
