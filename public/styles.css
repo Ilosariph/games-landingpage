@@ -24,6 +24,7 @@
   --ttt: #2f5ec4;
   --ttt-x: #d8443a;
   --ttt-o: #2f5ec4;
+  --bx: #7a4bb0;
   --pit: #2fbf71;
   --shadow: 0 1px 2px rgba(40, 30, 10, 0.06), 0 8px 28px rgba(40, 30, 10, 0.08);
   --radius: 14px;
@@ -57,6 +58,7 @@
   --ttt: #5a85e0;
   --ttt-x: #e0554a;
   --ttt-o: #5a85e0;
+  --bx: #a77ddb;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px rgba(0, 0, 0, 0.35);
     color-scheme: dark;
   }
@@ -84,6 +86,7 @@
   --ttt: #5a85e0;
   --ttt-x: #e0554a;
   --ttt-o: #5a85e0;
+  --bx: #a77ddb;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px rgba(0, 0, 0, 0.35);
   color-scheme: dark;
 }
@@ -169,6 +172,7 @@ main { max-width: 1160px; margin: 0 auto; }
 .card-connect-four { --accent: var(--c4); }
 .card-tic-tac-toe { --accent: var(--ttt); }
 .card-solitaire { --accent: var(--sol); }
+.card-binoxxo { --accent: var(--bx); }
 .card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .card:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 .card h2 { font-family: var(--serif); font-size: 1.55rem; line-height: 1.1; letter-spacing: -0.01em; }
@@ -307,6 +311,27 @@ main { max-width: 1160px; margin: 0 auto; }
 .card:hover .thumb.ttt span.last { animation: pop 0.35s ease both; }
 .card:hover .thumb.ttt line { animation: tttstrike 0.4s 0.2s ease-out both; }
 @keyframes tttstrike { from { stroke-dashoffset: 1; } }
+
+.thumb.bx {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  gap: 3px;
+  padding: 8px;
+  background: color-mix(in srgb, var(--bx) 18%, var(--surface));
+}
+.thumb.bx span {
+  display: grid;
+  place-items: center;
+  background: var(--surface);
+  border-radius: 3px;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1;
+  color: var(--bx);
+}
+.thumb.bx span.g { color: var(--ink); background: color-mix(in srgb, var(--bx) 8%, var(--surface)); }
+.card:hover .thumb.bx span.last { animation: pop 0.35s ease both; }
 
 .thumb.sol { display: block; position: relative; background: var(--sol-felt); }
 .thumb.sol span {

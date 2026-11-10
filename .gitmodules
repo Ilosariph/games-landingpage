@@ -26,3 +26,7 @@
 	path = games/solitaire
 	url = ../solitaire.git
 	branch = main
+[submodule "games/binoxxo"]
+	path = games/binoxxo
+	url = ../binoxxo.git
+	branch = main
