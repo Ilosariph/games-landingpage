@@ -1,0 +1,28 @@
+[submodule "games/nonogram"]
+	path = games/nonogram
+	url = ../nonogram.git
+	branch = main
+[submodule "games/sudoku"]
+	path = games/sudoku
+	url = ../sudoku.git
+	branch = main
+[submodule "games/minesweeper"]
+	path = games/minesweeper
+	url = ../minesweeper.git
+	branch = main
+[submodule "games/battleships"]
+	path = games/battleships
+	url = ../battleships.git
+	branch = main
+[submodule "games/connect-four"]
+	path = games/connect-four
+	url = ../connect-four.git
+	branch = main
+[submodule "games/tic-tac-toe"]
+	path = games/tic-tac-toe
+	url = ../tic-tac-toe.git
+	branch = main
+[submodule "games/solitaire"]
+	path = games/solitaire
+	url = ../solitaire.git
+	branch = main

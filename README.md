@@ -18,6 +18,19 @@ The reverse proxy in front must forward WebSocket upgrades for `/ws` (Traefik an
 | `PORT` | `5000` | HTTP + WebSocket port |
 | `MAX_CLIENTS` | `150` | Max concurrent WebSocket connections |
 
+## Games (submodules)
+
+Every game repo is a git submodule under `games/<slug>` (relative URLs `../<slug>.git`, tracking `main`). They're only there for convenient editing — the landing page image doesn't use them (`games` is in `.dockerignore`), so builds work whether or not the submodules are checked out.
+
+```sh
+git clone --recurse-submodules git@github.com:Ilosariph/games-landingpage.git
+git submodule update --init                # in an existing clone
+git submodule update --remote --merge      # pull latest main of every game
+git submodule add ../<slug>.git games/<slug> && git config -f .gitmodules submodule.games/<slug>.branch main   # new game
+```
+
+Commit inside `games/<slug>` and push from there; then commit the bumped pointer here (optional — nothing deploys from it).
+
 ## Test
 
 ```sh
@@ -34,3 +47,4 @@ npm test                       # game simulation tests (node --test, no deps)
 | `public/js/slither.js` | Client: input, interpolation, canvas rendering, HUD |
 | `public/index.html`, `public/styles.css` | Landing page |
 | `Dockerfile`, `docker-compose.yml` | Container image and sample compose |
+| `games/<slug>` | Game repos as submodules (not part of the image) |
